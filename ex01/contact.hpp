@@ -3,10 +3,9 @@
 
 #include <iostream>
 
-class contact
+class Contact
 {
-    //atributtttt es       ñ
-private:
+private:                                   //ATRIBUTES
     std::string first_name;
     std::string last_name;
     std::string nickname;
@@ -14,17 +13,11 @@ private:
     std::string darkest_secret;
 
 public:
-    //CONSTRUCTOR VACIO
-    contact();
-    //CONSTRUCTOR CON ATRIBUTOS
-    contact(string name); 
-    //CONSTRUCTOR COPIA
-    contact(&contact contacto); //crear obj a partir de otro
-    //ASSIGN OPERATOR
-    operator=(&contact contacto) //operadores de los atbts entre dos objetos
-
-    //DESTRUCTOR
-    ~contact();
+    Contact();                                      //CONSTRUCTOR VACIO
+    Contact(std::string name);                      //CONSTRUCTOR CON ATRIBUTOS
+    Contact(Contact &contact);                     //CONSTRUCTOR COPIA
+    Contact &operator=(const Contact &contact);    //ASIGN OPERATOR
+    ~Contact();                                     //DESTRUCTOR
 
     //GETTERS
     std::string get_first_name();
