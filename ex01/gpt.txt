@@ -1,0 +1,246 @@
+#include <iostream>
+#include "contact.hpp"
+
+Contact::Contact():first_name(""), last_name(""), nickname(""), phone_number(""), darkest_secret("")    //CONSTRUCTOR
+{
+    std::cout << "constructor called";
+}
+
+Contact::Contact(Contact &contact)                                                                     //COPY CONSTRUCTOR
+{
+    *this=contact;
+}
+
+Contact &Contact::operator=(const Contact &contact)                                                    //OPERATOR
+{
+    *this = contact;
+    return (*this);
+}
+
+Contact::~Contact()                                                                                     //DESTRUCTOR
+{
+}
+
+//GETTERS
+
+std::string Contact::get_first_name()
+{
+    return this->first_name;
+}
+
+std::string Contact::get_last_name()
+{
+    return this->last_name;
+}
+
+std::string Contact::get_nickname()
+{
+    return this->nickname;
+}
+
+std::string Contact::get_phone_number()
+{
+    return this->phone_number;
+}
+
+std::string Contact::get_darkest_secret()
+{
+    return this->darkest_secret;
+}
+
+//SETTERS
+
+void Contact::set_first_name(std::string value)
+{
+    this->first_name = value;
+}
+void Contact::set_last_name(std::string value)
+{
+    this->last_name = value;
+}
+void Contact::set_nickname(std::string value)
+{
+    this->nickname = value;
+}
+void Contact::set_phone_number(std::string value)
+{
+    this->phone_number = value;
+}
+void Contact::set_darkest_secret(std::string value)
+{
+    this->darkest_secret = value;
+}#include <iostream>
+#include "phonebook.hpp"
+#include "contact.hpp"
+
+
+void add_contacts()
+{
+    Phonebook phonebook;
+    std::string imput;
+    phonebook.set_contacts(phonebook.index);
+}
+
+int main(int argc, char *argv[])
+{
+    std::string cmd;
+    
+    if (argc != 1)
+        return 1;
+    while(1)
+        {   
+            std::cin>>cmd;
+            if(cmd == "ADD")
+                {
+                    add_contacts();
+                }
+            if(cmd == "SEARCH")
+                {
+                    search_contacts();
+                }
+            if(cmd == "EXIT")
+                break;
+        }
+    return 0;
+}
+#include <iostream>
+#include "phonebook.hpp"
+
+Phonebook::Phonebook():contacts()                                   //CONSTRUCTOR
+{
+    std::cout << "constructor called";
+}
+
+Phonebook::Phonebook(Phonebook &Phonebook)                          //COPY CONSTRUCTOR
+{
+    *this=Phonebook;
+}
+
+Phonebook &Phonebook::operator=(const Phonebook &Phonebook)         //OPERATOR
+{
+    *this = Phonebook;                                                 
+    return (*this);
+}
+
+Phonebook::~Phonebook()                                             //DESTRUCTOR
+{                                                                       
+}
+
+//GETTERS
+
+
+std::string Phonebook::get_contacts()
+{
+    return *contacts;                                               
+}
+
+
+//SETTERS
+
+
+void Phonebook::set_contacts(index)
+{
+    Phonebook phonebook;
+    std::string imput;
+    
+    std::cout<<"pon el nombre";
+    std::cin>>imput;
+    phonebook.contacts[contact_index].set_first_name(imput);
+    std::cout<<"pon el segundo nombre";
+    std::cin>>imput;
+    contact.set_last_name(imput);
+    std::cout<<"pon el niconombre";
+    std::cin>>imput;
+    contact.set_nickname(imput);
+    std::cout<<"pon el numerico de tel";
+    std::cin>>imput;
+    contact.set_phone_number(imput);
+    std::cout<<"pon el secreto secretisimo";
+    std::cin>>imput;
+    contact.set_darkest_secret(imput); 
+}
+
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
+
+#include <iostream>
+
+class Contact
+{
+private:                                   //ATRIBUTES
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
+    std::string phone_number;
+    std::string darkest_secret;
+
+public:
+    Contact();                                      //CONSTRUCTOR VACIO
+    Contact(std::string name);                      //CONSTRUCTOR CON ATRIBUTOS
+    Contact(Contact &contact);                     //CONSTRUCTOR COPIA
+    Contact &operator=(const Contact &contact);    //ASIGN OPERATOR
+    ~Contact();                                     //DESTRUCTOR
+
+    //GETTERS
+    std::string get_first_name();
+    std::string get_last_name();
+    std::string get_nickname();
+    std::string get_phone_number();
+    std::string get_darkest_secret();
+    //SETTERS
+    void set_first_name(std::string value);
+    void set_last_name(std::string value);
+    void set_nickname(std::string value);
+    void set_phone_number(std::string value);
+    void set_darkest_secret(std::string value);
+};
+
+#endif#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+#include "contact.hpp"
+#include <iostream>
+
+class Phonebook
+{
+private:                            //ATRIBUTES
+    Contact contacts[8];
+    int     contact_index;
+
+public:
+    Phonebook();                                        //CONSTRUCOR VACIO
+    Phonebook(std::string name);                        //CONSTRUCTOR CON ATRIBUTOS
+    Phonebook(Phonebook &Phonebook);                    //COPY CONSTRUCTOR
+    Phonebook &operator=(const Phonebook &Phonebook);   //ASSIGN OPERATOR
+    ~Phonebook();                                       //DESTRUCTOR
+
+    //GETTERS
+    std::string Phonebook::get_contacts();
+    
+    //SETTERS
+    void Phonebook::set_contacts(std::string value);
+};
+
+#endifNAME = phonebook
+
+CXX = c++
+
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+
+SRC = phonebook.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME) 
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re:	fclean all
+
+.PHONY: all clean fclean regit restore .
