@@ -1,34 +1,24 @@
-#include <iostream>
 #include "phonebook.hpp"
-#include "contact.hpp"
+#include <iostream>
 
-
-void add_contacts()
+int main()
 {
-    Phonebook phonebook;
-    std::string imput;
-    phonebook.set_contacts(phonebook.index);
-}
-
-int main(int argc, char *argv[])
-{
+    PhoneBook phonebook;
     std::string cmd;
-    
-    if (argc != 1)
-        return 1;
-    while(1)
-        {   
-            std::cin>>cmd;
-            if(cmd == "ADD")
-                {
-                    add_contacts();
-                }
-            if(cmd == "SEARCH")
-                {
-                    search_contacts();
-                }
-            if(cmd == "EXIT")
-                break;
-        }
+
+    while (1)
+    {
+        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+        std::cin >> cmd;
+
+        if (cmd == "ADD")
+            phonebook.add();
+        else if (cmd == "SEARCH")
+            phonebook.search();
+        else if (cmd == "EXIT")
+            break;
+        else
+            std::cout << "Invalid command\n";
+    }
     return 0;
 }

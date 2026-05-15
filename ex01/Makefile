@@ -1,24 +1,22 @@
 NAME = phonebook
 
 CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-
-SRC = phonebook.cpp
-
+SRC = main.cpp phonebook.cpp contact.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME) 
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
-re:	fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

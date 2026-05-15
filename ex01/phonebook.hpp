@@ -1,26 +1,20 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
-#include "contact.hpp"
-#include <iostream>
 
-class Phonebook
+#include "contact.hpp"
+
+class PhoneBook
 {
-private:                            //ATRIBUTES
+private:
     Contact contacts[8];
-    int     contact_index;
+    int index;
+    int total;
 
 public:
-    Phonebook();                                        //CONSTRUCOR VACIO
-    Phonebook(std::string name);                        //CONSTRUCTOR CON ATRIBUTOS
-    Phonebook(Phonebook &Phonebook);                    //COPY CONSTRUCTOR
-    Phonebook &operator=(const Phonebook &Phonebook);   //ASSIGN OPERATOR
-    ~Phonebook();                                       //DESTRUCTOR
+    PhoneBook();
 
-    //GETTERS
-    std::string Phonebook::get_contacts();
-    
-    //SETTERS
-    void Phonebook::set_contacts(std::string value);
+    void add();
+    void search();
 };
 
 #endif
