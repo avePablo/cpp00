@@ -11,13 +11,25 @@ int main()
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         if (!std::getline(std::cin, cmd))
         {
-            std::cout << "\nEOF detectado. Saliendo.\n";
+            std::cout << "\nEOF detected. Closing program...\n";
             break;
         }
         if (cmd == "ADD")
-            phonebook.add();
+        {
+            if(phonebook.add() == 1)
+            {
+                std::cout << "\nEOF detected. Closing program...\n";
+                return 0;
+            }
+        }
         else if (cmd == "SEARCH")
-            phonebook.search();
+        {            
+            if(phonebook.search() == 1)
+            {                                
+                std::cout << "\nEOF detected. Closing program...\n";
+                return 0;
+            }
+        }
         else if (cmd == "EXIT")
             break;
         else if (!cmd.empty())

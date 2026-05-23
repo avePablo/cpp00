@@ -13,8 +13,8 @@ private:
 public:
     PhoneBook();
 
-    void add();
-    void search();
+    int add();
+    int search();
 };
 
 #endif
