@@ -21,11 +21,12 @@ int PhoneBook::add()
 
     std::cout << "First name: ";
     if (!std::getline(std::cin, input))
-            return (1);
+        return (1);
     while(input == "\0")
     {
         std::cout << "Field \033[1;31mCANNOT\033[0m be empty.\nType a first name: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (1);
     }
     contacts[index].set_first_name(input);
 
@@ -35,10 +36,10 @@ int PhoneBook::add()
     while(input == "\0")
     {
         std::cout << "Field \033[1;31mCANNOT\033[0m be empty.\nType a last name: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (1);
     }
     contacts[index].set_last_name(input);
-
 
     std::cout << "Nickname: ";
     if (!std::getline(std::cin, input))
@@ -46,7 +47,8 @@ int PhoneBook::add()
     while(input == "\0")
     {
         std::cout << "Field \033[1;31mCANNOT\033[0m be empty.\nType a nickname: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (1);
     }
     contacts[index].set_nickname(input);
 
@@ -56,7 +58,8 @@ int PhoneBook::add()
     while(input == "\0")
     {
         std::cout << "Field \033[1;31mCANNOT\033[0m be empty.\nType a phone number: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (1);
     }
     contacts[index].set_phone_number(input);
 
@@ -66,7 +69,8 @@ int PhoneBook::add()
     while(input == "\0")
     {
         std::cout << "Field \033[1;31mCANNOT\033[0m be empty.\nType a darkest secret: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (1);
     }
     contacts[index].set_darkest_secret(input);
 
